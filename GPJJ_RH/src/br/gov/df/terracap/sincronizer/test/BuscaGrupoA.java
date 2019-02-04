@@ -1,7 +1,7 @@
 package br.gov.df.terracap.sincronizer.test;
 
 import br.gov.df.terracap.sincronizer.dao.GrupoaDAO;
-import br.gov.df.terracap.sincronizer.entities.GrupoA;
+import br.gov.df.terracap.sincronizer.entities.OracleColaboradorTerracap;
 import java.util.List;
 
 /**
@@ -16,10 +16,10 @@ public class BuscaGrupoA {
 
 //        System.out.println(f.buscarTodosLadoA());
 //        System.out.println(f.buscarTodosLadoA2());
-        List<GrupoA> objetosDoA = f.buscarTodosLadoA();
-        List<GrupoA> objetosDoA2 = f.buscarTodosLadoA2();
+        List<OracleColaboradorTerracap> objetosDoA = f.buscarTodosLadoA();
+        List<OracleColaboradorTerracap> objetosDoA2 = f.buscarTodosLadoA2();
 
-        for (GrupoA objetoDoA : objetosDoA) {
+        for (OracleColaboradorTerracap objetoDoA : objetosDoA) {
             if (objetosDoA2.contains(objetoDoA)) {//O0BJETO DO RH EXISTE NO GPJ
                 f.atualizaA2(objetoDoA);//UPDATE NO GPJ
 

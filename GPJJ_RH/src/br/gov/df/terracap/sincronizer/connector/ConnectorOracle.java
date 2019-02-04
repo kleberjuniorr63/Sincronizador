@@ -4,7 +4,6 @@ package br.gov.df.terracap.sincronizer.connector;
  *
  * @author Jeysel e Kleber
  */
-
 public class ConnectorOracle extends Connector {
 
     public ConnectorOracle(String url, String user, String pass) {
