@@ -1,7 +1,7 @@
 package br.gov.df.terracap.sincronizer.test;
 
 import br.gov.df.terracap.sincronizer.dao.GrupobDAO;
-import br.gov.df.terracap.sincronizer.entities.GrupoB;
+import br.gov.df.terracap.sincronizer.entities.SqlSeguranca;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -17,14 +17,13 @@ public class BuscaGrupoB {
 
 //        System.out.println(f.buscarTodosLadoB());
 //        System.out.println(f.buscarTodosLadoB2());
-
-        List<GrupoB> objetosDoB = f.buscarTodosLadoB();
-        List<GrupoB> objetosDoB2 = f.buscarTodosLadoB2();
+        List<SqlSeguranca> objetosDoB = f.buscarTodosLadoB();
+        List<SqlSeguranca> objetosDoB2 = f.buscarTodosLadoB2();
 
         int cont = 0;
-        for (GrupoB objetoDoB : objetosDoB) {
+        for (SqlSeguranca objetoDoB : objetosDoB) {
             if (objetosDoB2.contains(objetoDoB)) {
-                GrupoB objetoDoLado2 = findByMatricula(objetoDoB.getMatricula(), objetosDoB2);
+                SqlSeguranca objetoDoLado2 = findByMatricula(objetoDoB.getMatricula(), objetosDoB2);
                 if (objetoDoLado2 != null) {
                     if (objetoDoLado2.getAtivo() != objetoDoB.getAtivo()) {
                         f.atualizaB2(objetoDoB);
@@ -38,8 +37,8 @@ public class BuscaGrupoB {
 
     }
 
-    public static GrupoB findByMatricula(BigDecimal matricula, List<GrupoB> objetosB) {
-        for (GrupoB objetoDoB : objetosB) {
+    public static SqlSeguranca findByMatricula(BigDecimal matricula, List<SqlSeguranca> objetosB) {
+        for (SqlSeguranca objetoDoB : objetosB) {
             if (objetoDoB.getMatricula() == matricula && !objetoDoB.getNome().contains("PESSOA")) {
                 return objetoDoB;
             }
@@ -47,4 +46,5 @@ public class BuscaGrupoB {
         }
         return null;
     }
+
 }

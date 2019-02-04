@@ -6,7 +6,7 @@ import java.math.BigDecimal;
  *
  * @author Jeysel e Kleber
  */
-public class GrupoB {
+public class SqlSeguranca {
 
     private BigDecimal matricula;
     private int ativo;
@@ -72,7 +72,7 @@ public class GrupoB {
         this.tipoUsuario = tipoUsuario;
     }
 
-    public GrupoB() {
+    public SqlSeguranca() {
     }
 
     @Override
@@ -92,14 +92,14 @@ public class GrupoB {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final GrupoB other = (GrupoB) obj;
+        final SqlSeguranca other = (SqlSeguranca) obj;
         if (this.matricula != other.matricula && (this.matricula == null || !this.matricula.equals(other.matricula))) {
             return false;
         }
         return true;
     }
-    
-    public GrupoB(BigDecimal matricula, String cpf, String nome, String login, int ativo, int revisao_id, int tipoUsuario) {
+
+    public SqlSeguranca(BigDecimal matricula, String cpf, String nome, String login, int ativo, int revisao_id, int tipoUsuario) {
         this.matricula = matricula;
         this.cpf = cpf;
         this.nome = nome;

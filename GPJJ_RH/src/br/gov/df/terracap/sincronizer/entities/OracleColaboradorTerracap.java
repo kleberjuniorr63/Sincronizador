@@ -1,45 +1,54 @@
-package br.gov.df.terracap.sincronizer.models;
+package br.gov.df.terracap.sincronizer.entities;
 
-public class SqlGpjDesenv {
+/**
+ *
+ * @author jeysel e Kleber
+ */
+public class OracleColaboradorTerracap {
 
-    /**
-     *
-     * @author Jeysel e Kleber
-     */
-    protected int matricula;
-    protected int ativo;
-    protected int codOrgao;
-    protected String cpf;
-    protected String email;
-    protected String emailChefe;
-    protected String matriculaChefe;
-    protected String nome;
-    protected String nomeChefe;
-    protected String nomeOrgao;
-    protected String siglaOrgao;
-    protected String telefone;
+    private String matricula;
+    private String ativo;
+    private String codOrgao;
+    private String cpf;
+    private String email;
+    private String emailChefe;
+    private String matriculaChefe;
+    private String nome;
+    private String nomeChefe;
+    private String nomeOrgao;
+    private String siglaOrgao;
+    private String telefone;
 
-    public int getMatricula() {
+    @Override
+    public boolean equals(Object obj) {
+        OracleColaboradorTerracap f = (OracleColaboradorTerracap) obj;
+        if (getMatricula().equalsIgnoreCase(f.getMatricula())) {
+            return true;
+        }
+        return false;
+    }
+
+    public String getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(int matricula) {
+    public void setMatricula(String matricula) {
         this.matricula = matricula;
     }
 
-    public int getAtivo() {
+    public String getAtivo() {
         return ativo;
     }
 
-    public void setAtivo(int ativo) {
+    public void setAtivo(String ativo) {
         this.ativo = ativo;
     }
 
-    public int getCodOrgao() {
+    public String getCodOrgao() {
         return codOrgao;
     }
 
-    public void setCodOrgao(int codOrgao) {
+    public void setCodOrgao(String codOrgao) {
         this.codOrgao = codOrgao;
     }
 
@@ -68,6 +77,10 @@ public class SqlGpjDesenv {
     }
 
     public String getMatriculaChefe() {
+//        if (matriculaChefe.equals("null")) {
+//            return null;
+//        } 
+//Caso a atualização/incerção apresente algum erro, descomentar o campo. 
         return matriculaChefe;
     }
 
@@ -115,38 +128,18 @@ public class SqlGpjDesenv {
         this.telefone = telefone;
     }
 
-    public SqlGpjDesenv() {
-    }
-
-    public SqlGpjDesenv(int matricula, int ativo, int codOrgao, String cpf, String email, String emailChefe, String matriculaChefe, String nome, String nomeChefe, String nomeOrgao, String siglaOrgao, String telefone) {
-        this.matricula = matricula;
-        this.ativo = ativo;
-        this.codOrgao = codOrgao;
-        this.cpf = cpf;
-        this.email = email;
-        this.emailChefe = emailChefe;
-        this.matriculaChefe = matriculaChefe;
-        this.nome = nome;
-        this.nomeChefe = nomeChefe;
-        this.nomeOrgao = nomeOrgao;
-        this.siglaOrgao = siglaOrgao;
-        this.telefone = telefone;
-    }
-
     @Override
     public String toString() {
-        return "\n   --Dados n_GPJ_DESENV--"
+        return "\n    --Dados do colaborador TERRACAP--"
                 + "\n Matricula: " + getMatricula()
                 + "\n Ativo: " + getAtivo()
-                + "\n Codigo do orgão: " + getCodOrgao()
+                + "\n Cod. Orgão: " + getCodOrgao()
                 + "\n CPF: " + getCpf()
                 + "\n E-mail: " + getEmail()
-                + "\n E-mail do chefe: " + getEmailChefe()
-                + "\n Matrícula do chefe: " + getMatriculaChefe()
-                + "\n nome: " + getNome()
+                + "\n E-mail chefe: " + getEmailChefe()
+                + "\n Matricula chefe: " + getMatriculaChefe()
+                + "\n Nome: " + getNome()
                 + "\n Nome do chefe: " + getNomeChefe()
-                + "\n Nome do orgão: " + getNomeOrgao()
-                + "\n Sígla do orgão: " + getSiglaOrgao()
                 + "\n Telefone: " + getTelefone()
                 + "\n ";
     }

@@ -2,7 +2,7 @@ package br.gov.df.terracap.sincronizer.dao;
 
 import br.gov.df.terracap.sincronizer.connector.Connector;
 import br.gov.df.terracap.sincronizer.connector.ConnectorOptions;
-import br.gov.df.terracap.sincronizer.entities.GrupoA;
+import br.gov.df.terracap.sincronizer.entities.OracleColaboradorTerracap;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,13 +10,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ * @author jeysel e Kleber
+ * OBS: Caso a atualização/incerção apresente erros, descomentar o campo da
+ *      classe OracleColaboradorTerracap
+ */
 public class GrupoaDAO {
 
-    public static List<GrupoA> buscarTodosLadoA() throws Exception {
-        List<GrupoA> objetos = new ArrayList<GrupoA>();
+    public static List<OracleColaboradorTerracap> buscarTodosLadoA() throws Exception {
+        List<OracleColaboradorTerracap> objetos = new ArrayList<OracleColaboradorTerracap>();
         try {
 
-            String sql = "select * from GRH.VW_COLABORADOR_TERRACAP";
+            String sql = "SELECT * FROM GRH.VW_COLABORADOR";
             Connector connector = ConnectorOptions.ORACLE;
 
             Connection connection = connector.getConnection();
@@ -25,16 +31,16 @@ public class GrupoaDAO {
 
             while (rs.next()) {
 
-                GrupoA f = new GrupoA();
+                OracleColaboradorTerracap f = new OracleColaboradorTerracap();
                 f.setMatricula(rs.getString("matricula"));
                 f.setAtivo(rs.getString("ativo"));
                 f.setCodOrgao(rs.getString("codOrgao"));
                 f.setCpf(rs.getString("cpf"));
                 f.setEmail(rs.getString("email"));
                 f.setEmailChefe(rs.getString("emailchefe"));
-                f.setMatriculaChefe(rs.getString("matricula_chefe"));
+                f.setMatriculaChefe(rs.getString("matriculachefe"));
                 f.setNome(rs.getString("nome"));
-                f.setNomeChefe(rs.getString("nome_chefe"));
+                f.setNomeChefe(rs.getString("nomechefe"));
                 f.setNomeOrgao(rs.getString("nomeOrgao"));
                 f.setSiglaOrgao(rs.getString("siglaOrgao"));
                 f.setTelefone(rs.getString("telefone"));
@@ -49,8 +55,8 @@ public class GrupoaDAO {
         return objetos;
     }
 
-    public static List<GrupoA> buscarTodosLadoA2() throws Exception {
-        List<GrupoA> objetos = new ArrayList<GrupoA>();
+    public static List<OracleColaboradorTerracap> buscarTodosLadoA2() throws Exception {
+        List<OracleColaboradorTerracap> objetos = new ArrayList<OracleColaboradorTerracap>();
         try {
 
             String sql = "SELECT * FROM [dbo].[VW_Funcionario]";
@@ -61,7 +67,7 @@ public class GrupoaDAO {
 
             while (rs.next()) {
 
-                GrupoA f = new GrupoA();
+                OracleColaboradorTerracap f = new OracleColaboradorTerracap();
                 f.setMatricula(rs.getString("matricula"));
                 f.setAtivo(rs.getString("ativo"));
                 f.setCodOrgao(rs.getString("codOrgao"));
@@ -86,7 +92,7 @@ public class GrupoaDAO {
         return objetos;
     }
 
-    public int atualizaA2(GrupoA objetoDoA) {
+    public int atualizaA2(OracleColaboradorTerracap objetoDoA) {
         int ret = 0;
         try {
 
@@ -124,7 +130,7 @@ public class GrupoaDAO {
         return ret;
     }
 
-    public int insereA2(GrupoA objetoDoA) {
+    public int insereA2(OracleColaboradorTerracap objetoDoA) {
         int ret = 0;
         try {
 

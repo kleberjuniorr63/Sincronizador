@@ -2,7 +2,7 @@ package br.gov.df.terracap.sincronizer.dao;
 
 import br.gov.df.terracap.sincronizer.connector.Connector;
 import br.gov.df.terracap.sincronizer.connector.ConnectorOptions;
-import br.gov.df.terracap.sincronizer.entities.GrupoB;
+import br.gov.df.terracap.sincronizer.entities.SqlSeguranca;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,6 +12,10 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ *
+ * @author jeysel e Kleber
+ */
 public class GrupobDAO {
 
     public static Connector connector;
@@ -26,24 +30,24 @@ public class GrupobDAO {
         connOracle = connectorOracle.getConnection();
     }
 
-    public static List<GrupoB> buscarTodosLadoB() throws Exception {
-        List<GrupoB> objetos = new ArrayList<GrupoB>();
+    public static List<SqlSeguranca> buscarTodosLadoB() throws Exception {
+        List<SqlSeguranca> objetos = new ArrayList<SqlSeguranca>();
         try {
 
-            String sql = "SELECT * FROM GRH.VW_USUARIO_PESSOA_GPJ";
+            String sql = "SELECT * FROM GRH.VW_COLABORADOR";
 
             PreparedStatement st = connOracle.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
 
             while (rs.next()) {
 
-                GrupoB f = new GrupoB();
+                SqlSeguranca f = new SqlSeguranca();
 
                 f.setMatricula(rs.getBigDecimal("matricula"));
                 f.setAtivo(rs.getInt("ativo"));
                 f.setCpf(rs.getString("cpf"));
                 f.setNome(rs.getString("nome"));
-                f.setLogin(rs.getString("ds_login"));
+                f.setLogin(rs.getString("login"));
 
                 objetos.add(f);
 
@@ -57,8 +61,8 @@ public class GrupobDAO {
         return objetos;
     }
 
-    public static List<GrupoB> buscarTodosLadoB2() throws Exception {
-        List<GrupoB> objetos = new ArrayList<GrupoB>();
+    public static List<SqlSeguranca> buscarTodosLadoB2() throws Exception {
+        List<SqlSeguranca> objetos = new ArrayList<SqlSeguranca>();
         try {
 
             String sql = "SELECT * FROM [dbo].[usuario]";
@@ -68,7 +72,7 @@ public class GrupobDAO {
 
             while (rs.next()) {
 
-                GrupoB f = new GrupoB();
+                SqlSeguranca f = new SqlSeguranca();
 
                 f.setMatricula(rs.getBigDecimal("matricula"));
                 f.setAtivo(rs.getInt("ativo"));
@@ -90,7 +94,7 @@ public class GrupobDAO {
         return objetos;
     }
 
-    public int atualizaB2(GrupoB objetoDoB) {
+    public int atualizaB2(SqlSeguranca objetoDoB) {
         int ret = 0;
         try {
 
@@ -116,7 +120,7 @@ public class GrupobDAO {
         return ret;
     }
 
-    public int insereB2(GrupoB objetoDoB) {
+    public int insereB2(SqlSeguranca objetoDoB) {
         int ret = 0;
         try {
 
